@@ -3,6 +3,6 @@
 
 @section('content')
     <div>
-        sdfsdfsdfsdfs
+        teste blade
     </div>
 @endsection
