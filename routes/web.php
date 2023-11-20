@@ -18,10 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -29,6 +25,9 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(ExameController::class)->group(function () {
         Route::get('/HomeSistema', 'HomeSistema')->name('HomeSistema');
+        Route::get('/AdicionarExame', 'AdicionarExame')->name('AdicionarExame');
+        Route::post('/CadastrarConsulta', 'CadastrarConsulta')->name('CadastrarConsulta');
+        Route::get('/VizualizarExame/{id_exame}', 'VizualizarExame')->name('VizualizarExame');
     });
 });
 
