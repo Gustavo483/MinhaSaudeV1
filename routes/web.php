@@ -33,7 +33,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/recuperar-arquivo/{nomeArquivo}', 'recuperarArquivo')->name('recuperarArquivo');
         Route::get('/excluir-arquivo/{id_arquivo}', 'ExcluirArquivo')->name('ExcluirArquivo');
         Route::post('/criar-nota/{id_exame}', 'criarNota')->name('CriarNota');
-
+        Route::post('/editar-nota/{id_exame}', 'editarNota')->name('EditarNota');
+        Route::get('/excluir-nota/{id_notaExame}', 'excluirNota')->name('ExcluirNota');
 
     });
 });

@@ -205,6 +205,11 @@ class ExameController extends Controller
         }
     }
 
+    /**
+     * @param ExameModel $id_exame
+     * @param CriarNotaRequest $request
+     * @return RedirectResponse
+     */
     public function criarNota(ExameModel $id_exame, CriarNotaRequest $request)
     {
         try {
@@ -222,6 +227,50 @@ class ExameController extends Controller
         }catch (\Exception $exception){
             \DB::rollback();
             return back()->with('error', $exception->getMessage());
+        }
+    }
+    public function editarNota(ExameModel $id_exame,CriarNotaRequest $request)
+    {
+        try {
+            \DB::beginTransaction();
+            if($id_exame->id_user !== Auth::user()->id){
+                throw new \Exception('Você não tem permissão para editar o exame');
+            }
+
+            $nota = NotaExameModel::where('id_notaExame', $request->id_notaExame)->first();
+
+            $nota->update([
+                'st_nomeNota'=>$request->st_nomeNota,
+                'st_descricao'=>$request->st_descricao,
+            ]);
+
+            \DB::commit();
+
+            return  back()->with('success', 'Nota editada com sucesso.');
+
+        }catch (\Exception $exception){
+            \DB::rollback();
+            return back()->with('error', $exception->getMessage());
+
+        }
+    }
+
+    public function excluirNota(NotaExameModel $id_notaExame)
+    {
+        try {
+            \DB::beginTransaction();
+
+            $id_notaExame->delete();
+
+            \DB::commit();
+
+            return back()->with('success', 'Nota excluída com sucesso.');
+
+        }catch (\Exception $exception){
+
+            \DB::rollback();
+            return back()->with('error', $exception->getMessage());
+
         }
     }
 
