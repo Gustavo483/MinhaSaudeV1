@@ -35,6 +35,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/criar-nota/{id_exame}', 'criarNota')->name('CriarNota');
         Route::post('/editar-nota/{id_exame}', 'editarNota')->name('EditarNota');
         Route::get('/excluir-nota/{id_notaExame}', 'excluirNota')->name('ExcluirNota');
+        Route::get('/editar-exame/{id_exame}', 'editarExame')->name('EditarExame');
+
+        Route::post('/update-exame/{id_exame}', 'updateExame')->name('UpdateExame');
+
 
     });
 });

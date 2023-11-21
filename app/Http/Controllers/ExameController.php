@@ -233,6 +233,7 @@ class ExameController extends Controller
     {
         try {
             \DB::beginTransaction();
+
             if($id_exame->id_user !== Auth::user()->id){
                 throw new \Exception('Você não tem permissão para editar o exame');
             }
@@ -273,5 +274,52 @@ class ExameController extends Controller
 
         }
     }
+
+    public function editarExame(ExameModel $id_exame)
+    {
+        return view('exame.editarExame',['exame'=>$id_exame]);
+    }
+
+    public function updateExame(ExameModel $id_exame, AdicionarExameRequest $request)
+    {
+        try {
+            \DB::beginTransaction();
+
+            if($id_exame->id_user !== Auth::user()->id){
+                throw new \Exception('Você não tem permissão para editar o exame');
+            }
+            $id_exame->update([
+                'st_especialidade'=>$request->st_especialidade,
+                'st_descricao'=>$request->st_descricao,
+                'st_nome_medico'=>$request->st_nome_medico,
+                'st_localizacao'=>$request->st_localizacao,
+                'dt_data' => $request->dt_data,
+            ]);
+
+            if ($request->fl_arquivo){
+                foreach ($request->fl_arquivo as $arquivo) {
+                    $return = $arquivo->storeas('arquivos', $arquivo->getClientOriginalName());
+                    $nome = explode('/',$return);
+
+                    $tipoArquivo = explode('.', $return);
+                    ArquivoModel::create([
+                        'id_exame'=>$id_exame->id_exame,
+                        'fl_arquivo'=>$nome[1],
+                        'st_tipoArquivo'=>$tipoArquivo[1]
+                    ]);
+                }
+            }
+            \DB::commit();
+
+            return redirect()->route('VizualizarExame', ['id_exame'=>$id_exame->id_exame])->with('success', 'Exame atualizado com sucesso');
+
+        }catch (\Exception $exception){
+            \DB::rollback();
+
+            return back()->with('error', $exception->getMessage());
+
+        }
+    }
+
 
 }
