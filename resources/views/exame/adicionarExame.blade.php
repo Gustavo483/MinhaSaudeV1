@@ -3,6 +3,8 @@
 
 @section('content')
     <div class="containerSistema">
+        <h1 class="text-center pt-10">Adicionar exame</h1>
+
         <form action="{{route('CadastrarConsulta')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-6 mt-10">
@@ -54,12 +56,12 @@
                         <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                         <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                     </div>
-                    <input id="dropzone-file" type="file" class="hidden" name="fl_arquivo[]" multiple  />
+                    <input accept=".pdf, image/*" id="dropzone-file" type="file" class="hidden" name="fl_arquivo[]" multiple  />
                 </label>
             </div>
 
             <div class="flex justify-center p-5">
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Salvar</button>
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Adicionar exame</button>
             </div>
         </form>
     </div>

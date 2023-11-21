@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ArquivoModel extends Model
+class NotaExameModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'tb_arquivos';
+    protected $table = 'tb_nota_exame';
+    protected $primaryKey = 'id_notaExame';
 
-    protected $primaryKey = 'id_arquivo';
-    protected $fillable = ['id_arquivo', 'id_exame','fl_arquivo','st_tipoArquivo'];
+    protected $fillable = ['st_nomeNota','st_descricao','id_exame'];
 
     public function Exame(){
         return $this->belongsTo(ExameModel::class, 'id_exame', 'id_exame');
     }
-
 }

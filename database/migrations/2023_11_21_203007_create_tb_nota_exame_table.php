@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_arquivos', function (Blueprint $table) {
-            $table->id('id_arquivo');
+        Schema::create('tb_nota_exame', function (Blueprint $table) {
+            $table->id('id_notaExame');
             $table->unsignedBigInteger('id_exame');
             $table->foreign('id_exame')->references('id_exame')->on('tb_exames');
-            $table->string('fl_arquivo')->nullable();
-            $table->string('st_tipoArquivo')->nullable();
+            $table->string('st_nomeNota');
+            $table->longText('st_descricao');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_arquivos');
+        Schema::dropIfExists('tb_nota_exame');
     }
 };

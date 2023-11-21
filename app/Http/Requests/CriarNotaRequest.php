@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdicionarExameRequest extends FormRequest
+class CriarNotaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,8 @@ class AdicionarExameRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "st_especialidade"=> ['required', 'min:5'],
-            "st_descricao"=> ['required'],
-            "st_nome_medico"=> ['required'],
-            "st_localizacao"=> ['required'],
-            "dt_data"=> ['required']
+            "st_nomeNota"=> ['required'],
+            "st_descricao"=> ['required']
         ];
     }
 }

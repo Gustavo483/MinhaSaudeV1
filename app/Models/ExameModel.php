@@ -19,8 +19,11 @@ class ExameModel extends Model
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
 
-    public function arquivo(){
+    public function arquivos(){
         return $this->hasMany(ArquivoModel::class, 'id_exame', 'id_exame');
     }
 
+    public function notas(){
+        return $this->hasMany(NotaExameModel::class, 'id_exame', 'id_exame');
+    }
 }

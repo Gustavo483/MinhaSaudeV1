@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExameController;
+use Illuminate\Support\Facades\Storage;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +16,7 @@ use App\Http\Controllers\ExameController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () {return view('welcome');});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -24,12 +24,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::controller(ExameController::class)->group(function () {
-        Route::get('/HomeSistema', 'HomeSistema')->name('HomeSistema');
-        Route::get('/AdicionarExame', 'AdicionarExame')->name('AdicionarExame');
-        Route::post('/CadastrarConsulta', 'CadastrarConsulta')->name('CadastrarConsulta');
-        Route::get('/VizualizarExame/{id_exame}', 'VizualizarExame')->name('VizualizarExame');
+        Route::get('/home-sistema', 'homeSistema')->name('HomeSistema');
+        Route::get('/adicionar-exame', 'adicionarExame')->name('AdicionarExame');
+        Route::post('/cadastrar-consulta', 'cadastrarConsulta')->name('CadastrarConsulta');
+        Route::get('/vizualizar-exame/{id_exame}', 'vizualizarExame')->name('VizualizarExame');
+        Route::get('/vizualiar-arquivo/{id_arquivo}', 'vizualiarArquivo')->name('VizualiarArquivo');
+        Route::get('/baixar-arquivo/{id_arquivo}', 'baixarArquivo')->name('BaixarArquivo');
+        Route::get('/recuperar-arquivo/{nomeArquivo}', 'recuperarArquivo')->name('recuperarArquivo');
+        Route::get('/excluir-arquivo/{id_arquivo}', 'ExcluirArquivo')->name('ExcluirArquivo');
+        Route::post('/criar-nota/{id_exame}', 'criarNota')->name('CriarNota');
+
+
     });
 });
-
 
 require __DIR__.'/auth.php';
