@@ -11,7 +11,7 @@
     </div>
     <div style="height: 90vh" class="flex justify-center items-center">
         <div class="">
-            <div class="flex justify-center mb-20">
+            <div class="flex justify-center mb-10">
                 <p style="font-size: 25px; color: #5CC6BA; font-weight: bolder">LOGIN</p>
             </div>
             <form method="POST" ACTION="{{route('login')}}">

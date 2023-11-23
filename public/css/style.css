@@ -104,6 +104,31 @@
     color: red;
     font-size: 13px;
 }
+
+@media screen and (max-width: 600px){
+    .inputSistema{
+        background: #e6e6e6;
+        display: block;
+        width: 100%;
+        border-radius: 10px;
+        border: none;
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 600px){
+    .inputSistema{
+        background: #e6e6e6;
+        width: 500px;
+        border-radius: 10px;
+        border: none;
+        padding: 10px;
+    }
+    .displayFlex{
+        display: flex;
+        justify-content: center;
+    }
+}
 .divExames{
     background: #e6e6e6;
     border-radius: 10px;
