@@ -1,6 +1,4 @@
-body{
-    background: #E6E6E6;
-}
+
 .colorteste{
     background: #5CC6BA;
 }
@@ -13,6 +11,57 @@ body{
     width: 90% ;
     margin: 0 auto;
 }
+
+.AdicionarExame{
+    background: #72B5A4;
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.BuscarExame{
+    width: 300px;
+    background: #e6e6e6;
+    border-radius: 10px;
+    padding: 5px 5px 5px 10px;
+    font-weight: bolder;
+    font-size: 13px;
+    color: #595757;
+}
+
+.totalExames{
+    color: #323434;
+    font-weight: bolder;
+    text-align: center;
+}
+.linkNavbar{
+    color: white;
+}
+.borderNavBar{
+    border: 1px solid #72B5A4;
+}
+.linkNavbar:hover{
+    color: #72B5A4;
+}
+.logo{
+    color: #72B5A4;
+}
+
+.TitlePage{
+    color: #72B5A4;
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+}
+.buttonHover{
+    border: 1px solid #72B5A4;
+    color: #72B5A4;
+}
+.buttonHover:hover{
+    background: #72B5A4;
+    color: white;
+}
+
 .flex1{
     display: flex;
     justify-content: space-around;
@@ -23,6 +72,10 @@ body{
 
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.bgNavBar{
+    margin: 0 auto;!important;
+    background: #595757;
 }
 
 .borderNota{
@@ -46,14 +99,32 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+.errorValidation{
+    color: red;
+    font-size: 13px;
+}
 .divExames{
-    background: #595757;
+    background: #e6e6e6;
     border-radius: 10px;
-    color: white;
-    margin-top: 10px;
-    margin-bottom: 15px;
+    color: #595757;
+    margin-top: 15px;
     padding: 15px;
     width: 400px;
+}
+.bottonExame{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    height: 70px;
+    background: #595757;
+}
+
+.pages{
+    width: 70px;
+    border-radius: 10px;
+    padding: 2px;
 }
 
 .tamanhoDivHome{

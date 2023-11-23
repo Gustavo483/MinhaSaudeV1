@@ -1,47 +1,41 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('components.basicComponent')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+@section('title', 'Minha saúde')
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Senha')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            placeholder="Senha"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-center mt-5 p-3">
-
-            <x-primary-button class="w-full flex justify-center p-4 colorteste">
-                {{ __('Acessar') }}
-            </x-primary-button>
-        </div>
-
-        <div class="flex items-center justify-center">
-            <div class="flex items-center mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                        {{ __('Esqueci minha senha') }}
-                    </a>
-                @endif
+@section('content')
+    <div style="height: 10vh;" class="flex justify-center">
+        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="{{asset('img/Icone_Principal.svg')}}" class="h-8" alt="Flowbite Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap logo">Minha Saúde</span>
+        </a>
+    </div>
+    <div style="height: 90vh" class="flex justify-center items-center">
+        <div class="">
+            <div class="flex justify-center mb-20">
+                <p style="font-size: 25px; color: #5CC6BA; font-weight: bolder">LOGIN</p>
             </div>
+            <form method="POST" ACTION="{{route('login')}}">
+                @csrf
+                <div class="flex justify-center">
+                    <input class="dark:focus:ring-gray-500 dark:focus:border-gray-500" style="background: #e6e6e6; width: 300px; border-radius: 10px; border: none" placeholder="E-mail" name="email" type="email" required>
+                </div>
+                <div class=" mt-5">
+                    <input class="dark:focus:ring-gray-500 dark:focus:border-gray-500" style="background: #e6e6e6; width: 300px; border-radius: 10px; border: none" placeholder="Senha" name="password" type="password" required>
+                </div>
+                <div class="errorValidation mt-3">
+                    {{ $errors ? $errors->first() : '' }}
+                </div>
+                <div class="mt-2 mb-10">
+                    <a  style="text-decoration: underline 0.5px;" href="#">Esqueci minha senha</a>
+                </div>
+
+                <button style="background: #72B5A4; color:white; padding: 10px; width: 100%; border-radius: 10px; font-weight: bolder; font-size: 18px" class="acessar" type="submit">Acessar</button>
+
+                <div class="flex justify-center mt-3">
+                    <a href="{{route('register')}}">Registrar-se</a>
+                </div>
+            </form>
         </div>
+    </div>
 
-
-    </form>
-</x-guest-layout>
+@endsection

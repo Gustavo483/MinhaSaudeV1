@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Storage;
 */
 
 Route::get('/', function () {return view('welcome');});
+Route::get('/dfdf', function () {return view('dashboard');})->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,9 +37,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/editar-nota/{id_exame}', 'editarNota')->name('EditarNota');
         Route::get('/excluir-nota/{id_notaExame}', 'excluirNota')->name('ExcluirNota');
         Route::get('/editar-exame/{id_exame}', 'editarExame')->name('EditarExame');
-
         Route::post('/update-exame/{id_exame}', 'updateExame')->name('UpdateExame');
-
 
     });
 });

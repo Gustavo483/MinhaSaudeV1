@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users');
             $table->string('st_especialidade');
-            $table->string('st_descricao');
+            $table->longText('st_descricao');
             $table->string('st_nome_medico');
             $table->string('st_localizacao');
             $table->date('dt_data');

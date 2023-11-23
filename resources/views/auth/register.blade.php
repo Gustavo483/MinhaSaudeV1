@@ -1,52 +1,56 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+@extends('components.basicComponent')
 
-        <!-- Name -->
+@section('title', 'Minha saúde')
+
+@section('content')
+    <div style="height: 10vh;" class="flex justify-center">
+        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="{{asset('img/Icone_Principal.svg')}}" class="h-8" alt="Flowbite Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap logo">Minha Saúde</span>
+        </a>
+    </div>
+    <div style="height: 90vh" class="flex justify-center items-center">
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <div class="flex justify-center mb-20">
+                <p style="font-size: 25px; color: #5CC6BA; font-weight: bolder">REGISTRAR-SE</p>
+            </div>
+            <form method="POST" ACTION="{{route('register')}}">
+                @csrf
+                <div class="flex justify-center">
+                    <input class="dark:focus:ring-gray-500 dark:focus:border-gray-500" style="background: #e6e6e6; width: 300px; border-radius: 10px; border: none" value="{{old('name')}}" placeholder="Nome" name="name" type="text" required>
+                </div>
+                <div class="errorValidation">
+                    {{ $errors->has('name') ? $errors->first('name') : '' }}
+                </div>
+
+                <div class="flex justify-center mt-5">
+                    <input class="dark:focus:ring-gray-500 dark:focus:border-gray-500" style="background: #e6e6e6; width: 300px; border-radius: 10px; border: none" placeholder="E-mail" value="{{old('email')}}" name="email" type="email" required>
+                </div>
+                <div class="errorValidation">
+                    {{ $errors->has('email') ? $errors->first('email') : '' }}
+                </div>
+
+                <div class=" mt-5">
+                    <input class="dark:focus:ring-gray-500 dark:focus:border-gray-500" style="background: #e6e6e6; width: 300px; border-radius: 10px; border: none" placeholder="Senha" name="password" type="password" required>
+                </div>
+
+                <div class=" mt-5">
+                    <input class="dark:focus:ring-gray-500 dark:focus:border-gray-500" style="background: #e6e6e6; width: 300px; border-radius: 10px; border: none" placeholder="Confirme sua senha" name="password_confirmation" type="password" required>
+                </div>
+
+                <div class="errorValidation">
+                    {{ $errors->has('password') ? $errors->first('password') : '' }}
+                </div>
+
+                <div style="margin-top: 20px">
+                    <button style="background: #72B5A4; color:white; padding: 10px; width: 100%; border-radius: 10px; font-weight: bolder; font-size: 18px" type="submit">Registrar-se</button>
+                </div>
+
+                <div class="flex justify-center mt-3">
+                    <a href="{{route('login')}}">Já tem login ? Acessar plataforma</a>
+                </div>
+            </form>
         </div>
+    </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+@endsection
