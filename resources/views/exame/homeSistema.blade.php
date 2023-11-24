@@ -42,7 +42,7 @@
                                 {{$exame->st_especialidade}}
                             </p>
                             <p class="font-bold">
-                                {{$exame->dt_data}}
+                                {{ \Carbon\Carbon::parse($exame->dt_data)->format('d/m/Y') }}
                             </p>
                         </div>
                         <div class="mt-3">

@@ -150,7 +150,7 @@
         </div>
         <div class="mt-2">
             <span class="spanExame">Data :</span>
-            {{$exame->dt_data}}
+            {{ \Carbon\Carbon::parse($exame->dt_data)->format('d/m/Y') }}
         </div>
         <div class="mt-2">
             <span class="spanExame">Localidade :</span>
