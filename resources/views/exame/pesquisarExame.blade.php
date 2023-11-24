@@ -16,11 +16,6 @@
                         <label for="st_palabraChave" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Palavra chave</label>
                         <input  value="{{isset($pesquisa) && $pesquisa['st_palabraChave'] ? $pesquisa['st_palabraChave']  : old('st_palabraChave')}}" class="dark:focus:ring-gray-500 dark:focus:border-gray-500 inputSistema2" name="st_palabraChave" placeholder="Digite a especialidade">
                     </div>
-
-                    <div>
-                        <label for="data" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Data Exame</label>
-                        <input style="background:#e6e6e6; border-radius: 10px;" type="date" value="{{isset($pesquisa) && $pesquisa['dt_data']  ? $pesquisa['dt_data'] : old('dt_data')}}" class="dark:focus:ring-gray-500 dark:focus:border-gray-500 inputSistema3" name="dt_data">
-                    </div>
                 </div>
 
                 <div class="flex justify-center p-5">

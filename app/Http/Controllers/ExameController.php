@@ -362,30 +362,11 @@ class ExameController extends Controller
     public function pesqusarExamePost(Request $request)
     {
         try {
-            if (!$request->st_palabraChave & !$request->dt_data){
-                return back()->with('error', 'Nenhum parametro informado para a busca.');
-            }
-
-            if ($request->st_palabraChave & $request->dt_data !== null){
-                $exames = ExameModel::where('st_especialidade', 'like', '%' . $request->st_palabraChave . '%')
-                    ->orWhere('st_descricao', 'like', '%' . $request->st_palabraChave . '%')
-                    ->orWhere('st_nome_medico', 'like', '%' . $request->st_palabraChave . '%')
-                    ->orWhere('st_localizacao', 'like', '%' . $request->st_palabraChave . '%')
-                    ->orWhere('dt_data', 'like', '%' . $request->dt_data . '%')
-                    ->paginate(5);
-            }
-
-            if ($request->st_palabraChave & $request->dt_data === null){
-                $exames = ExameModel::where('st_especialidade', 'like', '%' . $request->st_palabraChave . '%')
-                    ->orWhere('st_descricao', 'like', '%' . $request->st_palabraChave . '%')
-                    ->orWhere('st_nome_medico', 'like', '%' . $request->st_palabraChave . '%')
-                    ->orWhere('st_localizacao', 'like', '%' . $request->st_palabraChave . '%')
-                    ->paginate(5);
-            }
-
-            if (!$request->st_palabraChave & $request->dt_data !== null){
-                $exames= ExameModel::where('dt_data', $request->dt_data)->paginate(5);
-            }
+            $exames = ExameModel::where('st_especialidade', 'like', '%' . $request->st_palabraChave . '%')
+                ->orWhere('st_descricao', 'like', '%' . $request->st_palabraChave . '%')
+                ->orWhere('st_nome_medico', 'like', '%' . $request->st_palabraChave . '%')
+                ->orWhere('st_localizacao', 'like', '%' . $request->st_palabraChave . '%')
+                ->paginate(5);
 
             return view('exame.pesquisarExame', ['exames'=> $exames, 'pesquisa'=> $request->all()]);
 

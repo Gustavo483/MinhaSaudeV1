@@ -1,24 +1,16 @@
-
-.colorteste{
-    background: #5CC6BA;
-}
-
 .center{
     text-align: center;
 }
-
 .containerSistema{
     width: 90% ;
     margin: 0 auto;
 }
-
 .AdicionarExame{
     background: #72B5A4;
     width: 300px;
     padding: 10px;
     border-radius: 10px;
 }
-
 .BuscarExame{
     width: 300px;
     background: #e6e6e6;
@@ -28,7 +20,6 @@
     font-size: 13px;
     color: #595757;
 }
-
 .totalExames{
     color: #323434;
     font-weight: bolder;
@@ -46,7 +37,6 @@
 .logo{
     color: #72B5A4;
 }
-
 .TitlePage{
     color: #72B5A4;
     font-size: 30px;
@@ -61,7 +51,6 @@
     background: #72B5A4;
     color: white;
 }
-
 .flex1{
     display: flex;
     justify-content: space-around;
@@ -77,7 +66,6 @@
     margin: 0 auto;!important;
     background: #595757;
 }
-
 .borderNota{
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     padding: 10px;
@@ -86,22 +74,16 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.teste{
-    width: 100%;
-    height: 100vh;
-}
 .titulo{
     font-size: 25px;
     font-weight: bolder;
 }
-
 .MostrarArquivoDiv{
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .errorValidation{
     color: red;
     font-size: 13px;
@@ -111,13 +93,11 @@
     background: #e6e6e6;
     margin-top: 5px;
     margin-bottom: 5px;
-
 }
 .spanExame{
     font-weight: bolder;
     color: #595757;
 }
-
 @media screen and (max-width: 600px){
     .inputSistema{
         background: #e6e6e6;
@@ -144,7 +124,6 @@
         padding: 10px;
     }
 }
-
 @media screen and (min-width: 600px){
     .inputSistema{
         background: #e6e6e6;
@@ -192,23 +171,19 @@
     height: 70px;
     background: #595757;
 }
-
 .pages{
     width: 70px;
     border-radius: 10px;
     padding: 2px;
 }
-
 .tamanhoDivHome{
     width: 650px;
 }
-
 .titleHome{
     font-size: 35px;
     font-weight: bolder;
     color: #7c7a7a;
 }
-
 .linkAvaliar{
     text-align: center;
     color: white;
