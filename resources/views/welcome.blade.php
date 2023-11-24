@@ -2,7 +2,7 @@
 @section('title', 'Minha saúde')
 
 @section('content')
-    <div>
+    <div class="containerSistema">
         <div class="flex1 mt-2">
             <div class="tamanhoDivHome">
                 <img class=" mr-2 w-100 imgInicio" src="{{asset('img/usingComputer.png')}}" alt="logo">

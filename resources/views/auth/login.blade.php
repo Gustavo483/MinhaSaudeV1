@@ -19,7 +19,7 @@
                 <div class="flex justify-center">
                     <input class="dark:focus:ring-gray-500 dark:focus:border-gray-500" style="background: #e6e6e6; width: 300px; border-radius: 10px; border: none" placeholder="E-mail" name="email" type="email" required>
                 </div>
-                <div class=" mt-5">
+                <div class=" mt-5 flex justify-center">
                     <input class="dark:focus:ring-gray-500 dark:focus:border-gray-500" style="background: #e6e6e6; width: 300px; border-radius: 10px; border: none" placeholder="Senha" name="password" type="password" required>
                 </div>
                 <div class="errorValidation mt-3">

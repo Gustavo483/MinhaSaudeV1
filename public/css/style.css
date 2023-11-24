@@ -123,8 +123,14 @@
         border: none;
         padding: 10px;
     }
+    .tamanhoDivHome{
+        width: 100%;
+    }
 }
 @media screen and (min-width: 600px){
+    .tamanhoDivHome{
+        width: 650px;
+    }
     .inputSistema{
         background: #e6e6e6;
         width: 500px;
@@ -175,9 +181,6 @@
     width: 70px;
     border-radius: 10px;
     padding: 2px;
-}
-.tamanhoDivHome{
-    width: 650px;
 }
 .titleHome{
     font-size: 35px;
