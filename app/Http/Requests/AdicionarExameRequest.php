@@ -22,10 +22,10 @@ class AdicionarExameRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "st_especialidade"=> ['required', 'min:5'],
+            "st_especialidade"=> ['required', 'min:5', 'max:200'],
             "st_descricao"=> ['required'],
-            "st_nome_medico"=> ['required'],
-            "st_localizacao"=> ['required'],
+            "st_nome_medico"=> ['required', 'max:100'],
+            "st_localizacao"=> ['required', 'max:100'],
             "dt_data"=> ['required']
         ];
     }

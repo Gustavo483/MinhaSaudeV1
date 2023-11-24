@@ -22,7 +22,7 @@ class CriarNotaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "st_nomeNota"=> ['required'],
+            "st_nomeNota"=> ['required', 'max:50'],
             "st_descricao"=> ['required']
         ];
     }
