@@ -3,6 +3,7 @@
 
 @section('content')
     @include('components.navBar')
+    @include('components.returnSistem')
     <div class="containerSistema">
         <div class="flex justify-center mb-10 pt-10">
             <p style="font-size: 25px; color: #5CC6BA; font-weight: bolder">Adicionar Exame</p>

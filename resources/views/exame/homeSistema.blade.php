@@ -3,7 +3,7 @@
 
 @section('content')
     @include('components.navBar')
-
+    @include('components.returnSistem')
     <div class="containerSistema">
 
         <h1 class="mt-5 mb-3 TitlePage">EXAMES</h1>

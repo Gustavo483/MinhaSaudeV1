@@ -79,8 +79,10 @@
 }
 
 .borderNota{
-    border:1px solid gray;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     padding: 10px;
+    width: 100%;
+    border-radius: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -103,6 +105,17 @@
 .errorValidation{
     color: red;
     font-size: 13px;
+}
+.divArquivos{
+    border-radius: 10px;
+    background: #e6e6e6;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+.spanExame{
+    font-weight: bolder;
+    color: #595757;
 }
 
 @media screen and (max-width: 600px){

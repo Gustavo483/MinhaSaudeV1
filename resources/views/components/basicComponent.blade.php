@@ -11,7 +11,6 @@
 </head>
 <body>
 <div class="">
-    @include('components.returnSistem')
     @yield('content')
 </div>
 </body>
