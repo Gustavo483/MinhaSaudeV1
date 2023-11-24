@@ -127,12 +127,46 @@
         border: none;
         padding: 10px;
     }
+    .inputSistema2{
+        background: #e6e6e6;
+        display: block;
+        width: 300px;
+        border-radius: 10px;
+        border: none;
+        padding: 10px;
+    }
+    .inputSistema3{
+        background: #e6e6e6;
+        display: block;
+        width: 300px;
+        border-radius: 10px;
+        border: none;
+        padding: 10px;
+    }
 }
 
 @media screen and (min-width: 600px){
     .inputSistema{
         background: #e6e6e6;
         width: 500px;
+        border-radius: 10px;
+        border: none;
+        padding: 10px;
+    }
+
+    .inputSistema2{
+        background: #e6e6e6;
+        display: block;
+        width: 350px;
+        border-radius: 10px;
+        border: none;
+        padding: 10px;
+    }
+    .inputSistema3{
+        background: #e6e6e6;
+        display: block;
+        width: 200px;
+
         border-radius: 10px;
         border: none;
         padding: 10px;

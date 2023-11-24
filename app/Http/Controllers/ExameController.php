@@ -8,12 +8,10 @@ use App\Models\ArquivoModel;
 use App\Models\NotaExameModel;
 use App\Models\User;
 use App\Models\ExameModel;
-use http\Env\Request;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use function Symfony\Component\String\s;
 
 class ExameController extends Controller
 {
@@ -172,6 +170,11 @@ class ExameController extends Controller
 
         }
     }
+
+    /**
+     * @param ArquivoModel $id_arquivo
+     * @return RedirectResponse
+     */
     public function excluirArquivo(ArquivoModel $id_arquivo)
     {
         try {
@@ -229,6 +232,12 @@ class ExameController extends Controller
             return back()->with('error', $exception->getMessage());
         }
     }
+
+    /**
+     * @param ExameModel $id_exame
+     * @param CriarNotaRequest $request
+     * @return RedirectResponse
+     */
     public function editarNota(ExameModel $id_exame,CriarNotaRequest $request)
     {
         try {
@@ -256,6 +265,10 @@ class ExameController extends Controller
         }
     }
 
+    /**
+     * @param NotaExameModel $id_notaExame
+     * @return RedirectResponse
+     */
     public function excluirNota(NotaExameModel $id_notaExame)
     {
         try {
@@ -275,11 +288,20 @@ class ExameController extends Controller
         }
     }
 
+    /**
+     * @param ExameModel $id_exame
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function editarExame(ExameModel $id_exame)
     {
         return view('exame.editarExame',['exame'=>$id_exame]);
     }
 
+    /**
+     * @param ExameModel $id_exame
+     * @param AdicionarExameRequest $request
+     * @return RedirectResponse
+     */
     public function updateExame(ExameModel $id_exame, AdicionarExameRequest $request)
     {
         try {
@@ -317,9 +339,59 @@ class ExameController extends Controller
             \DB::rollback();
 
             return back()->with('error', $exception->getMessage());
-
         }
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|RedirectResponse
+     */
+    public function pesqusarExame()
+    {
+        try {
+            $exames = ExameModel::where('id_user', Auth::user()->id)->paginate(5);
+            return view('exame.pesquisarExame',['exames'=>$exames]);
+        }catch (\Exception $exception){
+            return back()->with('error', $exception->getMessage());
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|RedirectResponse
+     */
+    public function pesqusarExamePost(Request $request)
+    {
+        try {
+            if (!$request->st_palabraChave & !$request->dt_data){
+                return back()->with('error', 'Nenhum parametro informado para a busca.');
+            }
+
+            if ($request->st_palabraChave & $request->dt_data !== null){
+                $exames = ExameModel::where('st_especialidade', 'like', '%' . $request->st_palabraChave . '%')
+                    ->orWhere('st_descricao', 'like', '%' . $request->st_palabraChave . '%')
+                    ->orWhere('st_nome_medico', 'like', '%' . $request->st_palabraChave . '%')
+                    ->orWhere('st_localizacao', 'like', '%' . $request->st_palabraChave . '%')
+                    ->orWhere('dt_data', 'like', '%' . $request->dt_data . '%')
+                    ->paginate(5);
+            }
+
+            if ($request->st_palabraChave & $request->dt_data === null){
+                $exames = ExameModel::where('st_especialidade', 'like', '%' . $request->st_palabraChave . '%')
+                    ->orWhere('st_descricao', 'like', '%' . $request->st_palabraChave . '%')
+                    ->orWhere('st_nome_medico', 'like', '%' . $request->st_palabraChave . '%')
+                    ->orWhere('st_localizacao', 'like', '%' . $request->st_palabraChave . '%')
+                    ->paginate(5);
+            }
+
+            if (!$request->st_palabraChave & $request->dt_data !== null){
+                $exames= ExameModel::where('dt_data', $request->dt_data)->paginate(5);
+            }
+
+            return view('exame.pesquisarExame', ['exames'=> $exames, 'pesquisa'=> $request->all()]);
+
+        }catch (\Exception $exception){
+            return back()->with('error', $exception->getMessage());
+        }
+    }
 
 }

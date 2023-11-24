@@ -38,7 +38,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/excluir-nota/{id_notaExame}', 'excluirNota')->name('ExcluirNota');
         Route::get('/editar-exame/{id_exame}', 'editarExame')->name('EditarExame');
         Route::post('/update-exame/{id_exame}', 'updateExame')->name('UpdateExame');
-
+        Route::get('/pesqusar-exame', 'pesqusarExame')->name('PesqusarExame');
+        Route::post('/pesqusar-exame', 'pesqusarExamePost')->name('PesqusarExame');
     });
 });
 
