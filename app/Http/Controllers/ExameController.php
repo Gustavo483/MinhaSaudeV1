@@ -135,7 +135,7 @@ class ExameController extends Controller
     public function baixarArquivo(ArquivoModel $id_arquivo)
     {
         try {
-            $path = storage_path("app/public/arquivos/{$id_arquivo->fl_arquivo}");
+            $path = storage_path("app/arquivos/{$id_arquivo->fl_arquivo}");
 
             if ($id_arquivo->st_tipoArquivo === 'pdf'){
                 $headers = [
