@@ -40,7 +40,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/update-exame/{id_exame}', 'updateExame')->name('UpdateExame');
         Route::get('/pesqusar-exame', 'pesqusarExame')->name('PesqusarExame');
         Route::post('/pesqusar-exame', 'pesqusarExamePost')->name('PesqusarExame');
+
     });
 });
+Route::get('/sobre', function () {return view('sobre');});
 
 require __DIR__.'/auth.php';

@@ -11,6 +11,7 @@ use App\Models\ExameModel;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ExameController extends Controller
@@ -22,7 +23,7 @@ class ExameController extends Controller
     {
         try {
             $usuario = User::where('id', Auth::user()->id)->first();
-            $exames = $usuario->exame()->orderBy('created_at')->take(5)->get();
+            $exames = $usuario->exame()->orderBy('dt_data', 'desc')->take(5)->get();
             $total_exames = count($usuario->exame);
 
             if (!$usuario){
@@ -75,7 +76,8 @@ class ExameController extends Controller
 
             if ($request->fl_arquivo){
                 foreach ($request->fl_arquivo as $arquivo) {
-                    $return = $arquivo->storeas('arquivos', $arquivo->getClientOriginalName());
+                    $name = strval($exame->id_exame) .'_id_'. $arquivo->getClientOriginalName();
+                    $return = $arquivo->storeas('arquivos', $name);
                     $nome = explode('/',$return);
 
                     $tipoArquivo = explode('.', $return);
@@ -88,7 +90,7 @@ class ExameController extends Controller
             }
             \DB::commit();
 
-            return redirect()->route('HomeSistema')->with('success', 'Exame Cadastrado com sucesso');
+            return redirect()->route('VizualizarExame',['id_exame'=>$exame->id_exame])->with('success', 'Exame Cadastrado com sucesso');
 
         }catch (\Exception $exception){
             \DB::rollback();
@@ -147,11 +149,11 @@ class ExameController extends Controller
                 ];
             }
 
-            return response()->download($path, $id_arquivo->fl_arquivo, $headers);
+            $nameArquivo = explode("_id_", $id_arquivo->fl_arquivo)[1] ?? $id_arquivo->fl_arquivo;
+            return response()->download($path,$nameArquivo, $headers);
 
         }catch (\Exception $exception){
             return back()->with('error', $exception->getMessage());
-
         }
     }
 
@@ -178,9 +180,17 @@ class ExameController extends Controller
     public function excluirArquivo(ArquivoModel $id_arquivo)
     {
         try {
+            $path = storage_path("app/public/arquivos/$id_arquivo->fl_arquivo");
+
+            if (file_exists($path)) {
+                unlink($path);
+            }
+
             $id_arquivo->delete();
+
             return back()->with('success', 'Arquivo excluído com sucesso.');
         }catch (\Exception $exception){
+
             return back()->with('error', $exception->getMessage());
         }
     }
@@ -320,7 +330,8 @@ class ExameController extends Controller
 
             if ($request->fl_arquivo){
                 foreach ($request->fl_arquivo as $arquivo) {
-                    $return = $arquivo->storeas('arquivos', $arquivo->getClientOriginalName());
+                    $name = strval($id_exame->id_exame) .'_id_'. $arquivo->getClientOriginalName();
+                    $return = $arquivo->storeas('arquivos', $name);
                     $nome = explode('/',$return);
 
                     $tipoArquivo = explode('.', $return);
@@ -362,10 +373,13 @@ class ExameController extends Controller
     public function pesqusarExamePost(Request $request)
     {
         try {
-            $exames = ExameModel::where('st_especialidade', 'like', '%' . $request->st_palabraChave . '%')
-                ->orWhere('st_descricao', 'like', '%' . $request->st_palabraChave . '%')
-                ->orWhere('st_nome_medico', 'like', '%' . $request->st_palabraChave . '%')
-                ->orWhere('st_localizacao', 'like', '%' . $request->st_palabraChave . '%')
+            $exames = ExameModel::where('id_user', Auth::user()->id)
+                ->where(function ($query) use ($request) {
+                    $query->where('st_especialidade', 'like', '%' . $request->st_palabraChave . '%')
+                        ->orWhere('st_descricao', 'like', '%' . $request->st_palabraChave . '%')
+                        ->orWhere('st_nome_medico', 'like', '%' . $request->st_palabraChave . '%')
+                        ->orWhere('st_localizacao', 'like', '%' . $request->st_palabraChave . '%');
+                })
                 ->paginate(5);
 
             return view('exame.pesquisarExame', ['exames'=> $exames, 'pesquisa'=> $request->all()]);

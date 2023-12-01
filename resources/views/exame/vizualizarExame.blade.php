@@ -14,7 +14,7 @@
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                            Editar nota
+                            Editar anotação
                         </h3>
                         <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="editar-nota">
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -29,18 +29,17 @@
                         @csrf
                         <div class="grid gap-4 mb-4 grid-cols-2">
                             <div class="col-span-2">
-
-                                <input type="number" name="id_notaExame" id="id_notaExameEdit" class="hidden" placeholder="Nome da nota" required="">
-
-                                <label for="st_nomeNotaEdit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titulo Nota</label>
-                                <input type="text" name="st_nomeNota" id="st_nomeNotaEdit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nome da nota" required="">
+                                <input type="number" name="id_notaExame" id="id_notaExameEdit" class="hidden" required="">
+                                <label for="st_nomeNotaEdit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titulo da anotação</label>
+                                <input type="text" name="st_nomeNota" id="st_nomeNotaEdit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nome da anotação" required="">
                             </div>
+
                             <div class="errorValidation">
                                 {{ $errors->has('st_nomeNota') ? $errors->first('st_nomeNota') : ''}}
                             </div>
                             <div class="col-span-2">
                                 <label for="st_descricaoEdit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descrição</label>
-                                <textarea name="st_descricao" id="st_descricaoEdit" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Anotação" required></textarea>
+                                <textarea name="st_descricao" id="st_descricaoEdit" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required></textarea>
                             </div>
                             <div class="errorValidation">
                                 {{ $errors->has('st_descricao') ? $errors->first('st_descricao') : ''}}
@@ -48,7 +47,7 @@
                         </div>
                         <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                            Adicionar nota
+                            Adicionar anotação
                         </button>
                     </form>
                 </div>
@@ -63,7 +62,7 @@
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                            Criar nova nota
+                            Criar nova anotação
                         </h3>
                         <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -78,15 +77,15 @@
                         @csrf
                         <div class="grid gap-4 mb-4 grid-cols-2">
                             <div class="col-span-2">
-                                <label for="st_nomeNota" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titulo Nota</label>
-                                <input type="text" name="st_nomeNota" id="st_nomeNota" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nome da nota" required="">
+                                <label for="st_nomeNota" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titulo da anotação</label>
+                                <input type="text" name="st_nomeNota" id="st_nomeNota" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nome da anotação" required="">
                             </div>
                             <div class="errorValidation">
                                 {{ $errors->has('st_nomeNota') ? $errors->first('st_nomeNota') : ''}}
                             </div>
                             <div class="col-span-2">
                                 <label for="st_descricao" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descrição</label>
-                                <textarea name="st_descricao" id="st_descricao" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Anotação" required></textarea>
+                                <textarea name="st_descricao" id="st_descricao" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required></textarea>
                             </div>
                             <div class="errorValidation">
                                 {{ $errors->has('st_descricao') ? $errors->first('st_descricao') : ''}}
@@ -94,7 +93,7 @@
                         </div>
                         <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                            Adicionar nota
+                            Adicionar anotação
                         </button>
                     </form>
                 </div>
@@ -149,16 +148,16 @@
             {{$exame->st_especialidade}}
         </div>
         <div class="mt-2">
+            <span class="spanExame">Medico :</span>
+            {{$exame->st_nome_medico}}
+        </div>
+        <div class="mt-2">
             <span class="spanExame">Data :</span>
             {{ \Carbon\Carbon::parse($exame->dt_data)->format('d/m/Y') }}
         </div>
         <div class="mt-2">
             <span class="spanExame">Localidade :</span>
             {{$exame->st_localizacao}}
-        </div>
-        <div class="mt-2">
-            <span class="spanExame">Medico :</span>
-            {{$exame->st_nome_medico}}
         </div>
         <div class="mt-2">
             <span class="spanExame">Descrição :</span>
@@ -170,7 +169,7 @@
             @foreach($exame->arquivos as $arquivo)
                 <div class="p-2 divArquivos">
                     <div>
-                        <p class="ps-10">{{$arquivo->fl_arquivo}}</p>
+                        <p class="ps-10">{{ explode("_id_", $arquivo->fl_arquivo)[1] ?? '' }}</p>
                     </div>
                     <div class="flex justify-center items-center mt-2">
                         <div class="me-5">
@@ -213,12 +212,12 @@
         </div>
 
 
-        <p class="mt-10" style="font-size: 25px; color: #5CC6BA; font-weight: bolder">Notas do exame</p>
+        <p class="mt-10" style="font-size: 25px; color: #5CC6BA; font-weight: bolder">Anotações do exame</p>
 
         <div class="flex justify-end">
             <!-- Adicionar nota -->
             <button style="background: #72B5A4; color:white; padding: 10px; border-radius: 10px; font-weight: bolder; font-size: 15px"  data-modal-target="crud-modal" data-modal-toggle="crud-modal" type="button">
-                Adicionar nota
+                Adicionar anotação
             </button>
         </div>
 
@@ -246,7 +245,6 @@
                                 </button>
                             </div>
                         </div>
-
                     </div>
                     <div class="">{{$nota->st_descricao}}</div>
                 </div>
@@ -264,7 +262,7 @@
                                 <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                                 </svg>
-                                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Tem certeza que desseja excluir essa nota ?</h3>
+                                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Tem certeza que desseja excluir a anotação ?</h3>
                                 <a href="{{route('ExcluirNota', ['id_notaExame'=> $nota->id_notaExame])}}" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">Sim, tenho certeza</a>
                                 <button data-modal-hide="excluirNota{{$nota->id_notaExame}}" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Não, cancelar</button>
                             </div>

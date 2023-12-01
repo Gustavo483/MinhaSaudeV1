@@ -26,7 +26,8 @@ class AdicionarExameRequest extends FormRequest
             "st_descricao"=> ['required'],
             "st_nome_medico"=> ['required', 'max:100'],
             "st_localizacao"=> ['required', 'max:100'],
-            "dt_data"=> ['required']
+            "dt_data"=> ['required'],
+            "fl_arquivo"=>['max:4096']
         ];
     }
 }
