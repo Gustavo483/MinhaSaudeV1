@@ -37,7 +37,7 @@
             <p style="margin-top: 20px" class="text-center font-bold">Últimos 5 exames:</p>
             @foreach($exames as $exame)
                 <div class="flex justify-center">
-                    <a href="{{route('VizualizarExame', ['id_exame'=>$exame->id_exame])}}" class="divExames">
+                    <a href="{{route('VisualizarExame', ['id_exame'=>$exame->id_exame])}}" class="divExames">
                         <div class="flex justify-between">
                             <p class="font-bold">
                                 {{$exame->st_especialidade}}

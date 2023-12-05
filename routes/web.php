@@ -28,8 +28,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/home-sistema', 'homeSistema')->name('HomeSistema');
         Route::get('/adicionar-exame', 'adicionarExame')->name('AdicionarExame');
         Route::post('/cadastrar-consulta', 'cadastrarConsulta')->name('CadastrarConsulta');
-        Route::get('/vizualizar-exame/{id_exame}', 'vizualizarExame')->name('VizualizarExame');
-        Route::get('/vizualiar-arquivo/{id_arquivo}', 'vizualiarArquivo')->name('VizualiarArquivo');
+        Route::get('/visualizar-exame/{id_exame}', 'visualizarExame')->name('VisualizarExame');
+        Route::get('/visualiar-arquivo/{id_arquivo}', 'visualiarArquivo')->name('VisualiarArquivo');
         Route::get('/baixar-arquivo/{id_arquivo}', 'baixarArquivo')->name('BaixarArquivo');
         Route::get('/recuperar-arquivo/{nomeArquivo}', 'recuperarArquivo')->name('recuperarArquivo');
         Route::get('/excluir-arquivo/{id_arquivo}', 'ExcluirArquivo')->name('ExcluirArquivo');
@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/update-exame/{id_exame}', 'updateExame')->name('UpdateExame');
         Route::get('/pesqusar-exame', 'pesqusarExame')->name('PesqusarExame');
         Route::post('/pesqusar-exame', 'pesqusarExamePost')->name('PesqusarExame');
+        Route::get('/deletar-exame/{id_exame}', 'deletarExame')->name('DeletarExame');
 
     });
 });

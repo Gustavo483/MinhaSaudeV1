@@ -90,7 +90,7 @@ class ExameController extends Controller
             }
             \DB::commit();
 
-            return redirect()->route('VizualizarExame',['id_exame'=>$exame->id_exame])->with('success', 'Exame Cadastrado com sucesso');
+            return redirect()->route('VisualizarExame',['id_exame'=>$exame->id_exame])->with('success', 'Exame Cadastrado com sucesso');
 
         }catch (\Exception $exception){
             \DB::rollback();
@@ -104,10 +104,10 @@ class ExameController extends Controller
      * @param ExameModel $id_exame
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|RedirectResponse
      */
-    public function vizualizarExame(ExameModel $id_exame)
+    public function visualizarExame(ExameModel $id_exame)
     {
         try {
-            return view('exame.vizualizarExame', ['exame'=>$id_exame]);
+            return view('exame.visualizarExame', ['exame'=>$id_exame]);
 
         }catch (\Exception $exception){
             return back()->with('error', $exception->getMessage());
@@ -119,10 +119,10 @@ class ExameController extends Controller
      * @param ArquivoModel $id_arquivo
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|RedirectResponse
      */
-    public function vizualiarArquivo(ArquivoModel $id_arquivo)
+    public function visualiarArquivo(ArquivoModel $id_arquivo)
     {
         try {
-            return view('exame.vizualizarArquivo', ['arquivo'=>$id_arquivo]);
+            return view('exame.visualizarArquivo', ['arquivo'=>$id_arquivo]);
 
         }catch (\Exception $exception){
             return back()->with('error', $exception->getMessage());
@@ -344,7 +344,7 @@ class ExameController extends Controller
             }
             \DB::commit();
 
-            return redirect()->route('VizualizarExame', ['id_exame'=>$id_exame->id_exame])->with('success', 'Exame atualizado com sucesso');
+            return redirect()->route('VisualizarExame', ['id_exame'=>$id_exame->id_exame])->with('success', 'Exame atualizado com sucesso');
 
         }catch (\Exception $exception){
             \DB::rollback();
@@ -385,6 +385,32 @@ class ExameController extends Controller
             return view('exame.pesquisarExame', ['exames'=> $exames, 'pesquisa'=> $request->all()]);
 
         }catch (\Exception $exception){
+            return back()->with('error', $exception->getMessage());
+        }
+    }
+
+    public function deletarExame(ExameModel $id_exame)
+    {
+
+        try {
+            \DB::beginTransaction();
+
+            $auth = User::where('id', Auth::user()->id)->first();
+
+            if ($auth->id !== $id_exame->id_user){
+                throw new \Exception('Você não tem permissão para excluir esse exame.');
+            }
+
+            $id_exame->arquivos()->delete();
+            $id_exame->notas()->delete();
+            $id_exame->delete();
+
+            \DB::commit();
+
+            return redirect()->route('HomeSistema')->with('success','Exame excluído com sucesso.');
+
+        }catch (\Exception $exception){
+            \DB::rollback();
             return back()->with('error', $exception->getMessage());
         }
     }
