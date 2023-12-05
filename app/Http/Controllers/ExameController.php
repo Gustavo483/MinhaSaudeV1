@@ -180,7 +180,7 @@ class ExameController extends Controller
     public function excluirArquivo(ArquivoModel $id_arquivo)
     {
         try {
-            $path = storage_path("app/public/arquivos/$id_arquivo->fl_arquivo");
+            $path = storage_path("app/arquivos/$id_arquivo->fl_arquivo");
 
             if (file_exists($path)) {
                 unlink($path);
