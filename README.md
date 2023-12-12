@@ -25,7 +25,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 0. Relize a instalação do php 8.2 em seu computador.
 1. Em sua pasta raiz,onde deseje instalar o projeto, clone o arquivo do projeto usando o comando:
 ```sh
-**git clone** https://github.com/Gustavo483/MinhaSaudeV1.git
+git clone https://github.com/Gustavo483/MinhaSaudeV1.git
 ```
 
 3. Verifique se o Composer está instalado em seu sistema. Se você não tiver o Composer instalado, acesse o site oficial do Composer (https://getcomposer.org/) e siga as instruções de instalação adequadas para o seu sistema operacional.
