@@ -23,7 +23,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 ## Passo-a-passo - Instalação do projeto
 0. Relize a instalação do php 8.2 em seu computador.
-1. Em sua pasta raiz,onde deseje instalar o projeto, clone o arquivo do projeto usando o comando:
+1. Em sua pasta raiz, onde deseja instalar o projeto, clone o arquivo do projeto usando o comando:
 ```sh
 git clone https://github.com/Gustavo483/MinhaSaudeV1.git
 ```
